@@ -1,0 +1,3 @@
+[submodule "sleeper-api-wrapper"]
+	path = sleeper-api-wrapper
+	url = https://github.com/bginsber/sleeper-api-wrapper.git
