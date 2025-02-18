@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fantasy Football Performance Tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,28 +14,28 @@
 <body>
     <nav class="navbar navbar-dark">
         <div class="container">
-            <span class="navbar-brand mb-0 h1">Upset Guru Tracker 2024 Season</span>
+            <span class="navbar-brand">Upset Guru Tracker</span>
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <div class="row">
+    <div class="container mt-3">
+        <div class="row g-3">
             <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="card-title">Performance vs Projections Summary</h5>
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+                        <h5 class="card-title">Performance Summary</h5>
                         <small class="text-muted">Season 2024</small>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body px-0">
                         <div class="table-responsive">
                             <table class="table table-hover" id="summary-table">
                                 <thead>
                                     <tr>
                                         <th>Team</th>
-                                        <th>Avg +/-</th>
-                                        <th>Best Week +/-</th>
-                                        <th>Worst Week +/-</th>
-                                        <th>Weeks Over Projected</th>
+                                        <th>+/-</th>
+                                        <th>Best</th>
+                                        <th>Worst</th>
+                                        <th>Over</th>
                                     </tr>
                                 </thead>
                                 <tbody id="summary-body">
@@ -45,28 +45,26 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center gap-3">
-                            <h5 class="card-title">Weekly Performance Details</h5>
+                    <div class="card-header">
+                        <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2 gap-md-3">
+                            <h5 class="card-title mb-0">Weekly Details</h5>
                             <select class="form-select" id="team-selector">
                                 <option value="">Select a team...</option>
                             </select>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body px-0">
                         <div class="table-responsive">
                             <table class="table table-hover" id="weekly-table">
                                 <thead>
                                     <tr>
-                                        <th>Week</th>
-                                        <th>Actual Score</th>
-                                        <th>Projected Score</th>
-                                        <th>Difference</th>
+                                        <th>Wk</th>
+                                        <th>Actual</th>
+                                        <th>Proj</th>
+                                        <th>+/-</th>
                                     </tr>
                                 </thead>
                                 <tbody id="weekly-body">
@@ -76,10 +74,44 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Report Error</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="error-report-form" class="simple-form">
+                            <div class="form-group mb-3">
+                                <select class="form-select" id="error-team" required>
+                                    <option value="">Select team...</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="number" class="form-control" id="error-week" min="1" max="17" placeholder="Week" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <select class="form-select" id="error-type" required>
+                                    <option value="">Select type...</option>
+                                    <option value="actual">Actual Score</option>
+                                    <option value="projected">Projected Score</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="number" class="form-control" id="correct-value" step="0.01" placeholder="Correct Value" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" id="error-description" rows="2" placeholder="Additional context..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Submit Report</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <footer class="footer mt-5">
+    <footer class="footer mt-4">
         <div class="container text-center">
             <span class="text-muted">Fantasy Football Performance Tracker © 2024</span>
         </div>

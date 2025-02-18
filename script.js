@@ -249,6 +249,39 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSummaryTable();
     updateTeamSelector();
     
+    // Populate the error reporting form's team selector
+    const errorTeamSelector = document.getElementById('error-team');
+    Object.keys(WEEKLY_SCORES).sort().forEach(team => {
+        const option = document.createElement('option');
+        option.value = team;
+        option.textContent = team;
+        errorTeamSelector.appendChild(option);
+    });
+
+    // Handle error report form submission
+    const errorForm = document.getElementById('error-report-form');
+    errorForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const errorReport = {
+            team: document.getElementById('error-team').value,
+            week: document.getElementById('error-week').value,
+            errorType: document.getElementById('error-type').value,
+            correctValue: document.getElementById('correct-value').value,
+            description: document.getElementById('error-description').value,
+            timestamp: new Date().toISOString()
+        };
+
+        // For now, we'll just log the error report to the console
+        console.log('Error Report Submitted:', errorReport);
+        
+        // Show a success message to the user
+        alert('Thank you for submitting the error report. Our team will review it shortly.');
+        
+        // Reset the form
+        errorForm.reset();
+    });
+
     document.getElementById('team-selector').addEventListener('change', (e) => {
         updateWeeklyTable(e.target.value);
     });
